@@ -1,18 +1,35 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import ToDo from "./ToDo";
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      inputArr: [],
+      userTask: ''
+    }
+  }
+  updateTask = (input) => {
+    this.setState({
+      userTask: input
+    })
+  }
+  updateArr = () => {
+    this.setState({
+      inputArr: [...this.state.inputArr, this.state.userTask],
+      userTask: ''
+    })
+  }
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <input
+          value={this.state.userTask}
+          onChange={e => this.updateTask(e.target.value)}
+        />
+        <button onClick={this.updateArr}>Submit</button>
+        {this.state.inputArr.map((item, i) => <ToDo item={item} key={i}/>)}
       </div>
     );
   }

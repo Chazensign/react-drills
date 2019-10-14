@@ -1,6 +1,13 @@
 .App {
   text-align: center;
 }
+div {
+  text-align: center;
+  justify-content: center;
+}
+input {
+  margin-top: 20px;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
